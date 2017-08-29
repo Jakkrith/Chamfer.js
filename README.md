@@ -2,6 +2,8 @@
 
 Given any HTML element, use Chamfer.js to make it have chamfered borders and optionally a solid fill.
 
+![](https://github.com/MISoftware/Chamfer.js/raw/master/img/demo.png)
+
 ## Usage
 
 Include ResizeObserver.js polyfill:
@@ -53,3 +55,7 @@ The following options and their default values are available:
 	// resizes and will refresh the background
 }
 ```
+
+## TODO
+
+- Allow to choose the angle of the chamfer
