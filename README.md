@@ -1,10 +1,8 @@
-# Chamfer.js
-
-Given any HTML element, use Chamfer.js to make it have chamfered borders and optionally a solid fill.
+Given any HTML element, use Chamfer.js to make it have **chamfered borders/stroke** and optionally a solid fill.
 
 ![](https://github.com/MISoftware/Chamfer.js/raw/master/img/demo.png)
 
-## Usage
+# Usage
 
 Include ResizeObserver.js polyfill:
 
@@ -19,7 +17,7 @@ Include chamfer.js:
 ```
 
 
-Call ChamferBg(el:Element, [options:Object]) for each element to chamfer:
+Call `ChamferBg(el:Element, [options:Object])` for each element to chamfer:
 
 ```JS
 var el = document.getElementById('box');
@@ -56,6 +54,8 @@ The following options and their default values are available:
 }
 ```
 
-## TODO
+# TODO
 
 - Allow to choose the angle of the chamfer
+- Allow to set the fill as a gradients
+- Allow to set stroke style (ex.: dashed)
