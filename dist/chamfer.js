@@ -7,9 +7,12 @@ function ChamferBg(el, opt)
 	opt.br = opt.br===undefined ? true : opt.br;
 
 	const SIZE = opt.size!==undefined ? opt.size : 10;
-	const SW = opt.sw!==undefined ? opt.sw : 3;
-	const SC = opt.sc || 'silver';
+	const SW = opt.sw!==undefined ? opt.sw : 1;
+	const SC = opt.sc || 'black';
 	const FC = opt.fc;
+
+	var canvas = document.createElement("canvas");
+	var ctx = canvas.getContext("2d");
 
 	function SetBg() {
 		var rc = el.getBoundingClientRect();
@@ -18,8 +21,6 @@ function ChamferBg(el, opt)
 		const W = rc.width-SW;
 		const H = rc.height-SW;
 
-		var canvas = document.createElement("canvas");
-		var ctx = canvas.getContext("2d");
 		ctx.canvas.width = rc.width;
 		ctx.canvas.height = rc.height;
 		ctx.beginPath();
@@ -65,11 +66,21 @@ function ChamferBg(el, opt)
 			ctx.fillStyle = FC;
 			ctx.fill();
 		}
-		el.style.background = 'url(' + canvas.toDataURL() + ') no-repeat';
+
+		var imgUrl = canvas.toDataURL();
+		var img = new Image();
+		img.onload = function() {
+			el.style.background = 'url(' + imgUrl + ') no-repeat';
+		};
+		img.src = imgUrl;
 	}
 
-	new ResizeObserver(function(entries) {
-		SetBg();
-	}).observe(el);
+	if(opt.resize_observe)
+	{
+		new ResizeObserver(function(entries) {
+			SetBg();
+		}).observe(el);
+	}
+	
 	SetBg();
 }
