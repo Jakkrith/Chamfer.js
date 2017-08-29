@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+		@import url('https://fonts.googleapis.com/css?family=Bitter');
+
+		body
+		{
+			font-family: sans-serif;
+			font-family: 'Source Sans Pro', sans-serif;
+		}
+		
+		a
+		{
+			display: block;
+			text-decoration: none;
+			color: black;
+		}
+		header
+		{
+			font-family: Bitter, serif;
+			font-size: 20px;
+		}
+
+		#menu1
+		{
+			width: 200px;
+			padding: 20px;
+		}
+		#menu2
+		{
+			width: 200px;
+			padding: 20px;
+		}
+		textarea#txt
+		{
+			display: block;
+			background: none;
+			border: none;
+			padding: 0;
+			margin: 0;
+		}
+		icon
+		{
+			padding: 3px 7px;
+			display: inline-block;
+		}
+	</style>
+</head>
+
+<body>
+	Icons box:
+	<div>
+		<icon><img src="img/icon-chat.png" alt=""></icon>
+		<icon><img src="img/icon-mail.png" alt=""></icon>
+		<icon><img src="img/icon-write.png" alt=""></icon>
+	</div>
+
+	4 edges chamfer:
+	<div id="menu1">
+		<header>Menu</header>
+		<a href="">Item 1</a>
+		<a href="">Item 1</a>
+		<a href="">Item 1</a>
+		<a href="">Item 1</a>
+		<a href="">Item 1</a>
+		<a href="">Item 1</a>
+	</div>
+
+	2 edges chamfer:
+	<div id="menu2">
+		<header>Menu</header>
+		<a href="">Item 1</a>
+		<a href="">Item 1</a>
+		<a href="">Item 1</a>
+		<a href="">Item 1</a>
+		<a href="">Item 1</a>
+		<a href="">Item 1</a>
+	</div>
+
+	Textarea 2 edges + resizing grip:
+	<textarea name="" id="txt" cols="30" rows="10"></textarea>
+
+	<script src="ResizeObserver.js"></script>
+	<script src="chamfer.js"></script>
+	<script>
+		var el = document.getElementById('menu1');
+		ChamferBg(el, {
+			size: 15,
+			sw: 4,
+			sc: '#9dffff',
+			fc: '#3effff'
+		});
+
+		el = document.getElementById('menu2');
+		ChamferBg(el, {
+			size: 20,
+			sw: 6,
+			sc: '#447aec',
+			fc: '#21ceff',
+			tr: false,
+			bl: false
+		});
+
+		el = document.getElementById('txt');
+		ChamferBg(el, {
+			size: 20,
+			sw: 6,
+			sc: '#447aec',
+			fc: '#21ceff',
+			tl: false,
+			br: false
+		});
+
+		var icons = document.querySelectorAll("icon");
+		for(var i=0; i<icons.length; i++)
+		{
+			ChamferBg(icons[i], {
+				size: 4,
+				sw: 0,
+				fc: '#3effff',
+			});
+		}
+	</script>
+</body>
+</html>
