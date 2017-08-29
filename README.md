@@ -61,5 +61,6 @@ The following options and their default values are available:
 # TODO
 
 - Allow to choose the angle of the chamfer
+- Allow to set individual stroke color for each border
 - Allow to set the fill as a gradients
 - Allow to set stroke style (ex.: dashed)
