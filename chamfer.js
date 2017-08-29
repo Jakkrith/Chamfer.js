@@ -65,7 +65,7 @@ function ChamferBg(el, opt)
 			ctx.fillStyle = FC;
 			ctx.fill();
 		}
-		el.style.background = 'url(' + canvas.toDataURL() + ')';
+		el.style.background = 'url(' + canvas.toDataURL() + ') no-repeat';
 	}
 
 	new ResizeObserver(function(entries) {
