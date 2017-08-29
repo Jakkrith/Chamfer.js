@@ -1,5 +1,9 @@
 Given any HTML element, use Chamfer.js to make it have **chamfered borders/stroke** and optionally a solid fill.
 
+See detailed description at: [http://chamfer.misoftware.rs](http://chamfer.misoftware.rs)
+
+---
+
 ![](https://github.com/MISoftware/Chamfer.js/raw/master/img/demo.png)
 
 # Usage
