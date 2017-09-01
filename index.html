@@ -11,12 +11,13 @@
 	<main>
 		<section>
 			<h1>Chamfer.js</h1>
-			<h2>Canvas chamfered boxes as CSS background for any DOM element</h2>
-			<p>Given any element, it will set its <code>background-image</code> with an image (rendered with Canvas API) that has chamfered borders and optionally a solid fill.</p>
+			<h2>Add chamfered corners to any HTML element with 2 available methods</h2>
+			<p>For simple scenarios, given any element, <b>method 1</b> will set its <code>background-image</code> with an image that has chamfered borders and optionally a solid fill.</p>
+			<p>For advanced scenarios where you have content over the corners (to chamfer an img for example), use <b>method 2</b>, which creates <code>overlay div elements</code> for each chamfered corner.</p>
 		</section>
 
 		<section>
-			<h3>Samples</h3>
+			<h3>Samples method 1 - <code>ChamferBg()</code></h3>
 			<h4>Icons box:</h4>
 			<div>
 				<icon><img src="img/icon-chat.png" alt=""></icon>
@@ -56,6 +57,14 @@
 			<textarea id="txt" cols="40" rows="7" placeholder="Type something here.."></textarea>
 		</section>
 
+
+		<section>
+			<h3>Samples method 2 - <code>ChamferEnvelop()</code></h3>
+			<h4>Image chamfer:</h4>
+			<img src="img/sk8.jpg" id="img" />
+		</section>
+	
+
 		<!--<section>
 			<h4>Hexagons:</h4>
 			<div id="hex1"></div>
@@ -67,12 +76,13 @@
 			<h3>Usage:</h3>
 			<script src="dist/chamfer.js"></script>
 
-			Include ResizeObserver.js polyfill:
-			<pre>&lt;script src="dist/ResizeObserver.js"&gt;&lt;/script&gt;</pre>
+			
 			Include chamfer.js:
 			<pre>&lt;script src="dist/chamfer.js"&gt;&lt;/script&gt;</pre>
+			Include ResizeObserver.js polyfill if you use 'resize_observe' functionality (see options):
+			<pre>&lt;script src="dist/ResizeObserver.js"&gt;&lt;/script&gt;</pre>
 			<br />
-			Call <code>ChamferBg(el:Element, [options:Object])</code> for each element to chamfer:
+			Call <code>ChamferBg/ChamferEnvelop(el:Element, [options:Object])</code> for each element to chamfer:
 			<pre>var el = document.getElementById('box');
 ChamferBg(el, {
 	size: 20,
@@ -83,7 +93,7 @@ ChamferBg(el, {
 	br: false,
 	resize_observe: true
 });</pre>
-			
+
 			<br />
 			The following options and their default values are available:
 			<pre>
@@ -100,7 +110,7 @@ ChamferBg(el, {
 
 	resize_observe: false
 	// turn on resize_observe observer?
-	// this will observer whenever the element
+	// this will observe whenever the element
 	// resizes and will refresh the background
 }
 </pre>
@@ -111,7 +121,6 @@ ChamferBg(el, {
 
 			<p>Code licensed MIT. © 2017 Ramon F. Mendes</p>
 		</section>
-
 
 		<footer>
 			<a href="http://misoftware.rs/"><img src="img/logo_mi.png" /></a>
@@ -125,7 +134,6 @@ ChamferBg(el, {
 	<script>
 		var el;
 
-
 		el = document.querySelector('main');
 		ChamferBg(el, {
 			size: 6,
@@ -137,12 +145,18 @@ ChamferBg(el, {
 		el = document.querySelector('h1');
 		ChamferBg(el, {
 			size: 15,
-			sw: 0,
-			sc: '#447aec',
+			sw: 6,
+			sc: '#b7d6d6',
 			fc: '#d5f9f9'
 		});
 
-
+		el = document.querySelector('#img');
+		ChamferEnvelop(el, {
+			sw: 4,
+			sc: '#447aec',
+			size: 30,
+		});
+		
 		var icons = document.querySelectorAll("icon");
 		for(var i = 0; i < icons.length; i++) {
 			ChamferBg(icons[i], {
@@ -178,15 +192,6 @@ ChamferBg(el, {
 			fc: '#21ceff',
 			tl: false,
 			br: false,
-			resize_observe: true
-		});
-
-		el = document.getElementById('hex1');
-		ChamferBg(el, {
-			size: 26,
-			sw: 3,
-			sc: '#cdfefe',
-			fc: '#31f4f4',
 			resize_observe: true
 		});
 	</script>
