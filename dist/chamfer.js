@@ -1,3 +1,60 @@
+function ChamferImg(el, opt)
+{
+	opt = opt || {};
+	opt.tl = opt.tl === undefined ? true : opt.tl;
+	opt.tr = opt.tr === undefined ? true : opt.tr;
+	opt.bl = opt.bl === undefined ? true : opt.bl;
+	opt.br = opt.br === undefined ? true : opt.br;
+
+	const SIZE = opt.size !== undefined ? opt.size : 10;
+	const COLOR = opt.color || 'white';
+
+	el.style.position = "relative";
+
+	function CreateCorner(bt, br, bb, bl)
+	{
+		var el_corner;
+		el_corner = document.createElement("div")
+		el_corner.style.backgroundColor = COLOR;
+		el_corner.style.position = "absolute";
+		el_corner.style.width = 0;
+		el_corner.style.height = 0;
+		if(opt.bl)
+		{
+			el_corner.style.borderLeft = "solid " + SIZE + "px " + COLOR;
+			el_corner.style.left = "0";
+		}
+		if(opt.bt)
+		{
+			el_corner.style.borderTop = "solid " + SIZE + "px " + COLOR;
+			el_corner.style.top = "0";
+		}
+		if(opt.br)
+		{
+			el_corner.style.borderRight = "solid " + SIZE + "px " + COLOR;
+			el_corner.style.right = "0";
+		}
+		if(opt.bb)
+		{
+			el_corner.style.borderBottom = "solid " + SIZE + "px " + COLOR;
+			el_corner.style.bottom = "0";
+		}
+		el_corner.style.borderRight = br ? ("solid " + SIZE + "px " + COLOR) : undefined;
+		el_corner.style.borderBottom = bb ? ("solid " + SIZE + "px " + COLOR) : undefined;
+
+		el.appendChild(el_corner);
+	}
+
+	if(opt.tl)
+		CreateCorner(true, false, false, true);
+	if(opt.tr)
+		CreateCorner(true, true, false, false);
+	if(opt.br)
+		CreateCorner(false, true, true, false);
+	if(opt.bl)
+		CreateCorner(false, false, true, true);
+}
+
 function ChamferBg(el, opt)
 {
 	opt = opt || {};
@@ -63,6 +120,10 @@ function ChamferBg(el, opt)
 		}
 		if(FC)
 		{
+			/*var gradient = ctx.createRadialGradient(W / 2, H / 2, W / 2, W / 2, H / 2, 0);
+			gradient.addColorStop(1, "#eff9ff");
+			gradient.addColorStop(.6, "#79838f");*/
+
 			ctx.fillStyle = FC;
 			ctx.fill();
 		}
