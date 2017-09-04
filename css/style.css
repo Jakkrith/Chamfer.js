@@ -88,3 +88,21 @@ footer
 	width: 620px;
 	height: 446px;
 }
+#card
+{
+	background: #EFF9FF;
+}
+
+#card h5
+{
+	margin: 0;
+	padding: 15px;
+	padding-top: 17px;
+	background: #97EFEF;
+	font-size: 16px;
+}
+#card p
+{
+	margin: 0;
+	padding: 15px;
+}

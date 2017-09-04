@@ -8,13 +8,16 @@ function ChamferEnvelop(el, opt)
 	opt.bl = opt.bl === undefined ? true : opt.bl;
 	opt.br = opt.br === undefined ? true : opt.br;
 
-	const SIZE = opt.size !== undefined ? opt.size : 10;
-	const COLOR = opt.color || 'white';
-
+	var COLOR = opt.cc || 'white';
+	var SIZE = opt.size !== undefined ? opt.size : 10;
+	var SW = opt.sw!==undefined ? opt.sw : 1;
+	if(SW)
+		SIZE += Math.ceil(SW/2);
+	
 	var rc = el.getBoundingClientRect();
 	rc.width = Math.floor(rc.width);
 	rc.height = Math.floor(rc.height);
-	
+
 	// wrap the element with a div
 	var el_wraper = document.createElement('div');
 	el.parentNode.appendChild(el_wraper);
@@ -67,9 +70,13 @@ function ChamferEnvelop(el, opt)
 	{
 		var el_bg = document.createElement('div');
 		el_bg.style.position = "absolute";
+		el_bg.style.zIndex = "1";
 		el_bg.style.width = rc.width + "px";
 		el_bg.style.height = rc.height + "px";
+		el_bg.style.pointerEvents = "none";
 		el_wraper.insertBefore(el_bg, el_wraper.firstChild);
+
+		//opt.size = SIZE-1;
 
 		ChamferBg(el_bg, opt);
 	}

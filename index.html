@@ -63,6 +63,14 @@
 			<h4>Image chamfer:</h4>
 			<img src="img/sk8.jpg" id="img" />
 		</section>
+
+		<section>
+			<h4>Card+text chamfer:</h4>
+			<div id="card">
+				<h5>Card title</h5>
+				<p>If you need a solid background here, you MUST set it in CSS for this element; do NOT set if via Chamfer.js else it will cover the text.</p>
+			</div>
+		</section>
 	
 
 		<!--<section>
@@ -102,6 +110,7 @@ ChamferBg(el, {
 	sw: 1,		// stroke width
 	sc: 'black',	// stroke color,
 	fc: undefined,	// fill color
+	cc: 'white'		// corner color (for ChamferEnvelop)
 
 	tl: true,	// chamfer top-left corner?
 	tr: true,	// chamfer top-right corner?
@@ -152,9 +161,15 @@ ChamferBg(el, {
 
 		el = document.querySelector('#img');
 		ChamferEnvelop(el, {
+			sc: '#3effff',
 			sw: 4,
-			sc: '#447aec',
 			size: 30,
+		});
+
+		el = document.querySelector('#card');
+		ChamferEnvelop(el, {
+			sw: 3,
+			sc: '#5A8AAE'
 		});
 		
 		var icons = document.querySelectorAll("icon");
