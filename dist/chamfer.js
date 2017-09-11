@@ -15,12 +15,12 @@ function ChamferEnvelop(el, opt)
 		SIZE += Math.ceil(SW/2);
 	
 	var rc = el.getBoundingClientRect();
-	rc.width = Math.floor(rc.width);
-	rc.height = Math.floor(rc.height);
-
+	rc.width = Math.ceil(rc.width);
+	rc.height = Math.ceil(rc.height);
+	
 	// wrap the element with a div
 	var el_wraper = document.createElement('div');
-	el.parentNode.appendChild(el_wraper);
+	el.parentNode.insertBefore(el_wraper, el);
 	el_wraper.appendChild(el);
 	el_wraper.style.position = "relative";
 	el_wraper.style.width = rc.width + "px";

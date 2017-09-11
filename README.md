@@ -58,6 +58,13 @@ The following options and their default values are available:
 }
 ```
 
+# Real-life usage samples
+
+- http://atcommander.io/
+- Your site here!
+
+If you are using Chamfer.js in your site, I would be glad to put it in this list! To do it just create an new issue with the URL.
+
 # TODO
 
 - Allow to choose the angle of the chamfer
