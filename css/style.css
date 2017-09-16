@@ -25,7 +25,7 @@ section
 code, textarea, pre { font-family: 'Inconsolata', monospace; font-weight: bold; }
 pre { background: #e1ffff; margin: 0; margin-bottom: 10px; margin-top: 4px; padding: 7px 10px; }
 b { color: #31d2ff; }
-
+img { max-width: 100%; }
 h1
 {
 	margin: 0;

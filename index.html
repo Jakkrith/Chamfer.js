@@ -61,7 +61,12 @@
 		<section>
 			<h3>Samples method 2 - <code>ChamferEnvelop()</code></h3>
 			<h4>Image chamfer:</h4>
-			<img src="img/sk8.jpg" id="img" />
+			<img src="img/sk8.jpg" id="img1" />
+		</section>
+
+		<section>
+			<h4>Huge image (>1MB - size might be unknown at page load):</h4>
+			<img src="http://misoftware.rs/CDN/PublicImages/gg.png" id="img2" />
 		</section>
 
 		<section>
@@ -159,11 +164,17 @@ ChamferBg(el, {
 			fc: '#d5f9f9'
 		});
 
-		el = document.querySelector('#img');
+		el = document.querySelector('#img1');
 		ChamferEnvelop(el, {
 			sc: '#3effff',
 			sw: 4,
 			size: 30,
+		});
+
+		el = document.querySelector('#img2');
+		ChamferEnvelop(el, {
+			sc: '#EF0001',
+			sw: 4,
 		});
 
 		el = document.querySelector('#card');

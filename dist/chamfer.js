@@ -14,72 +14,81 @@ function ChamferEnvelop(el, opt)
 	if(SW)
 		SIZE += Math.ceil(SW/2);
 	
-	var rc = el.getBoundingClientRect();
-	rc.width = Math.ceil(rc.width);
-	rc.height = Math.ceil(rc.height);
-	
-	// wrap the element with a div
-	var el_wraper = document.createElement('div');
-	el.parentNode.insertBefore(el_wraper, el);
-	el_wraper.appendChild(el);
-	el_wraper.style.position = "relative";
-	el_wraper.style.width = rc.width + "px";
-	el_wraper.style.height = rc.height + "px";
-	
-	function CreateCorner(bt, br, bb, bl)
+	function EnvelopInternal()
 	{
-		var el_corner;
-		el_corner = document.createElement("div")
-		el_corner.style.position = "absolute";
-		el_corner.style.width = 0;
-		el_corner.style.height = 0;
-		if(bt!==undefined)
+		var rc = el.getBoundingClientRect();
+		rc.width = Math.ceil(rc.width);
+		rc.height = Math.ceil(rc.height);
+		
+		// wrap the element with a div
+		var el_wraper = document.createElement('div');
+		el.parentNode.insertBefore(el_wraper, el);
+		el_wraper.appendChild(el);
+		el_wraper.style.position = "relative";
+		el_wraper.style.width = rc.width + "px";
+		el_wraper.style.height = rc.height + "px";
+		
+		function CreateCorner(bt, br, bb, bl)
 		{
-			el_corner.style.borderTop = "solid " + SIZE + "px " + (bt ? COLOR : "transparent");
-			el_corner.style.top = 0;
+			var el_corner;
+			el_corner = document.createElement("div")
+			el_corner.style.position = "absolute";
+			el_corner.style.width = 0;
+			el_corner.style.height = 0;
+			if(bt!==undefined)
+			{
+				el_corner.style.borderTop = "solid " + SIZE + "px " + (bt ? COLOR : "transparent");
+				el_corner.style.top = 0;
+			}
+			if(br!==undefined)
+			{
+				el_corner.style.borderRight = "solid " + SIZE + "px " + (br ? COLOR : "transparent");
+				el_corner.style.left = 0;
+			}
+			if(bb!==undefined)
+			{
+				el_corner.style.borderBottom = "solid " + SIZE + "px " + (bb ? COLOR : "transparent");
+				el_corner.style.bottom = 0;
+			}
+			if(bl!==undefined)
+			{
+				el_corner.style.borderLeft = "solid " + SIZE + "px " + (bl ? COLOR : "transparent");
+				el_corner.style.right = 0;
+			}
+	
+			el_wraper.appendChild(el_corner);
 		}
-		if(br!==undefined)
+	
+		if(opt.tl)
+			CreateCorner(true, false, undefined, undefined);
+		if(opt.tr)
+			CreateCorner(true, undefined, undefined, false);
+		if(opt.br)
+			CreateCorner(undefined, undefined, true, false);
+		if(opt.bl)
+			CreateCorner(undefined, false, true, undefined);
+	
+		if(opt.sw!==0)
 		{
-			el_corner.style.borderRight = "solid " + SIZE + "px " + (br ? COLOR : "transparent");
-			el_corner.style.left = 0;
+			var el_bg = document.createElement('div');
+			el_bg.style.position = "absolute";
+			el_bg.style.zIndex = "1";
+			el_bg.style.width = rc.width + "px";
+			el_bg.style.height = rc.height + "px";
+			el_bg.style.pointerEvents = "none";
+			el_wraper.insertBefore(el_bg, el_wraper.firstChild);
+	
+			//opt.size = SIZE-1;
+	
+			ChamferBg(el_bg, opt);
 		}
-		if(bb!==undefined)
-		{
-			el_corner.style.borderBottom = "solid " + SIZE + "px " + (bb ? COLOR : "transparent");
-			el_corner.style.bottom = 0;
-		}
-		if(bl!==undefined)
-		{
-			el_corner.style.borderLeft = "solid " + SIZE + "px " + (bl ? COLOR : "transparent");
-			el_corner.style.right = 0;
-		}
-
-		el_wraper.appendChild(el_corner);
 	}
 
-	if(opt.tl)
-		CreateCorner(true, false, undefined, undefined);
-	if(opt.tr)
-		CreateCorner(true, undefined, undefined, false);
-	if(opt.br)
-		CreateCorner(undefined, undefined, true, false);
-	if(opt.bl)
-		CreateCorner(undefined, false, true, undefined);
-
-	if(opt.sw!==0)
-	{
-		var el_bg = document.createElement('div');
-		el_bg.style.position = "absolute";
-		el_bg.style.zIndex = "1";
-		el_bg.style.width = rc.width + "px";
-		el_bg.style.height = rc.height + "px";
-		el_bg.style.pointerEvents = "none";
-		el_wraper.insertBefore(el_bg, el_wraper.firstChild);
-
-		//opt.size = SIZE-1;
-
-		ChamferBg(el_bg, opt);
-	}
+	if(el.tagName.toLowerCase()=="img" && (el.complete && el.naturalHeight !== 0)==false)
+		// image not loaded
+		el.onload = EnvelopInternal;
+	else
+		EnvelopInternal();
 }
 
 function ChamferBg(el, opt)
