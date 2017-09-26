@@ -1,3 +1,5 @@
+![https://github.com/MISoftware/Chamfer.js/raw/master/img/logo.png](https://github.com/MISoftware/Chamfer.js/raw/master/img/logo.png)
+
 Given any HTML element, use Chamfer.js to make it have **chamfered borders/stroke** and optionally a solid fill.
 
 See detailed description at: [http://chamferjs.misoftware.rs](http://chamferjs.misoftware.rs)
