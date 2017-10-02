@@ -57,6 +57,11 @@
 			<textarea id="txt" cols="40" rows="7" placeholder="Type something here.."></textarea>
 		</section>
 
+		<section>
+			<h4>Fill pattern:</h4>
+			<div id="fill-pattern"></div>
+		</section>
+
 
 		<section>
 			<h3>Samples method 2 - <code>ChamferEnvelop()</code></h3>
@@ -219,6 +224,13 @@ ChamferBg(el, {
 			tl: false,
 			br: false,
 			resize_observe: true
+		});
+
+		el = document.getElementById('fill-pattern');
+		ChamferBg(el, {
+			sw: 6,
+			sc: '#F9C62D',
+			fp: 'img/vineyabc2.jpg'
 		});
 	</script>
 </body>

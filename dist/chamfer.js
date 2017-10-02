@@ -103,6 +103,7 @@ function ChamferBg(el, opt)
 	const SW = opt.sw!==undefined ? opt.sw : 1;
 	const SC = opt.sc || 'black';
 	const FC = opt.fc;
+	const FP = opt.fp;
 
 	var canvas = document.createElement("canvas");
 	var ctx = canvas.getContext("2d");
@@ -154,22 +155,34 @@ function ChamferBg(el, opt)
 			ctx.strokeStyle = SC;
 			ctx.stroke();
 		}
-		if(FC)
+		if(FP)
 		{
-			/*var gradient = ctx.createRadialGradient(W / 2, H / 2, W / 2, W / 2, H / 2, 0);
-			gradient.addColorStop(1, "#eff9ff");
-			gradient.addColorStop(.6, "#79838f");*/
+			var img = new Image();
+			img.src = FP;
+			img.onload = function() {
+				var pattern = ctx.createPattern(img, 'repeat');
+				ctx.fillStyle = pattern;
+				ctx.fill();
 
+				var imgUrl = canvas.toDataURL();
+				el.style.background = 'url(' + imgUrl + ') no-repeat';
+			};
+		}
+		else if(FC)
+		{
 			ctx.fillStyle = FC;
 			ctx.fill();
-		}
 
-		var imgUrl = canvas.toDataURL();
-		var img = new Image();
-		img.onload = function() {
+			var imgUrl = canvas.toDataURL();
 			el.style.background = 'url(' + imgUrl + ') no-repeat';
-		};
-		img.src = imgUrl;
+			
+			/*var imgUrl = canvas.toDataURL();
+			var img = new Image();
+			img.onload = function() {
+				el.style.background = 'url(' + imgUrl + ') no-repeat';
+			};
+			img.src = imgUrl;*/
+		}
 	}
 
 	if(opt.resize_observe)

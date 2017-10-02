@@ -69,6 +69,13 @@ textarea#txt
 	border: none;
 	background: none;
 }
+#fill-pattern
+{
+	width: 450px;
+	height: 270px;
+	background: red;
+}
+
 icon
 {
 	padding: 3px 7px;

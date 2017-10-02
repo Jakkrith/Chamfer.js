@@ -47,6 +47,7 @@ The following options and their default values are available:
 	sw: 1,		// stroke width
 	sc: 'black',	// stroke color,
 	fc: undefined,	// fill color
+	fp: undefined,	// URL of an image to use as fill pattern
 
 	tl: true,	// chamfer top-left corner?
 	tr: true,	// chamfer top-right corner?
