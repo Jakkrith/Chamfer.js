@@ -163,25 +163,21 @@ function ChamferBg(el, opt)
 				var pattern = ctx.createPattern(img, 'repeat');
 				ctx.fillStyle = pattern;
 				ctx.fill();
-
+				
 				var imgUrl = canvas.toDataURL();
 				el.style.background = 'url(' + imgUrl + ') no-repeat';
 			};
 		}
-		else if(FC)
+		else
 		{
-			ctx.fillStyle = FC;
-			ctx.fill();
+			if(FC)
+			{
+				ctx.fillStyle = FC;
+				ctx.fill();
+			}
 
 			var imgUrl = canvas.toDataURL();
 			el.style.background = 'url(' + imgUrl + ') no-repeat';
-			
-			/*var imgUrl = canvas.toDataURL();
-			var img = new Image();
-			img.onload = function() {
-				el.style.background = 'url(' + imgUrl + ') no-repeat';
-			};
-			img.src = imgUrl;*/
 		}
 	}
 
