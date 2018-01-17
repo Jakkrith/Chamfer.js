@@ -6,7 +6,7 @@ See detailed description at: [http://chamferjs.misoftware.rs](http://chamferjs.m
 
 ---
 
-![](https://github.com/MISoftware/Chamfer.js/raw/master/img/demo.png)
+![](https://github.com/MISoftware/Chamfer.js/raw/master/img/chamferjs.png)
 
 # Usage
 
