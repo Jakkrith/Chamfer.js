@@ -1,4 +1,4 @@
-![](https://github.com/MISoftware/Chamfer.js/raw/master/img/demo.png)
+![](https://github.com/MISoftware/Chamfer.js/raw/master/img/chamferjs.png)
 
 Given any HTML element, use Chamfer.js to make it have **chamfered borders/stroke** and optionally a solid fill.
 
