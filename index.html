@@ -13,7 +13,7 @@
 			<h1>Chamfer.js</h1>
 			<h2>Add chamfered corners to any HTML element with 2 available methods</h2>
 			<p>For simple scenarios, given any element, <b>method 1</b> will set its <code>background-image</code> with an image that has chamfered borders and optionally a solid fill.</p>
-			<p>For advanced scenarios where you have content over the corners (to chamfer an img for example), use <b>method 2</b>, which creates <code>overlay div elements</code> for each chamfered corner.</p>
+			<p>For advanced scenarios where you have content over the corners (to chamfer an img for example), use <b>method 2</b>, which creates <code>overlay triangular div elements</code> for each chamfered corner.</p>
 		</section>
 
 		<section>
@@ -120,7 +120,7 @@ ChamferBg(el, {
 	sw: 1,		// stroke width
 	sc: 'black',	// stroke color,
 	fc: undefined,	// fill color
-	cc: 'white'		// corner color (for ChamferEnvelop)
+	cc: 'white'	// corner color (for ChamferEnvelop)
 
 	tl: true,	// chamfer top-left corner?
 	tr: true,	// chamfer top-right corner?
